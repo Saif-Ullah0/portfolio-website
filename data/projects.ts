@@ -2,6 +2,18 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "flyrank-capstone",
+    title: "Organic Search Content Decay Predictor",
+    description:
+      "End-to-end ML pipeline forecasting organic search traffic decay across web pages before ranking drops occur. Built on 30K anonymized Google Search Console records. Uncovered 6 temporally leaky features that caused artificial 1.000 eval score. Implemented client-holdout domain-grouped validation revealing a +0.280 inflation gap vs naive split.",
+    stack: ["Python", "scikit-learn", "Pandas", "NumPy", "Google Search Console API", "Google Analytics API", "GitHub Pages"],
+    metrics: { "Records": "30K+", "Leaky Features Found": "6", "Validation Gap": "+0.280" },
+    github: "https://github.com/Saif-Ullah0/flyrank-ml-internship",
+    demo: "https://saif-ullah0.github.io/flyrank-ml-internship/work/paper/",
+    featured: true,
+    thumbnail: "/images/flyrank-capstone.png",
+  },
+  {
     id: "urban-crash-agent",
     title: "Urban Crash Safety Agent",
     description:
@@ -12,6 +24,18 @@ export const projects: Project[] = [
     demo: null,
     featured: true,
     thumbnail: "/images/urban-crash.png",
+  },
+  {
+    id: "ai-voice-receptionist",
+    title: "AI Voice Receptionist Agent",
+    description:
+      "Production-grade AI voice agent (Sarah) for CMS Mechanical Services handling inbound calls 24/7. Captures structured lead data, enforces business policies, triggers automated CRM sync to Airtable, and fires email confirmations post-call. Deployed on Railway with FastAPI webhook backend.",
+    stack: ["Python", "FastAPI", "Vapi", "Airtable API", "Railway", "Pydantic", "SMTP"],
+    metrics: { "Uptime": "24/7", "CRM": "Airtable", "Email": "Auto" },
+    github: "https://github.com/Saif-Ullah0/ai-voice-receptionist-agent",
+    demo: "https://ai-voice-receptionist-agent-production.up.railway.app/demo",
+    featured: true,
+    thumbnail: "/images/voice-agent.png",
   },
   {
     id: "traffic-sign-classifier",
@@ -34,7 +58,7 @@ export const projects: Project[] = [
     metrics: { "Learners": "5000+", "APIs": "500+ daily", "Tables": "12+" },
     github: "https://github.com/Saif-Ullah0/Edtech-Platform",
     demo: null,
-    featured: true,
+    featured: false,
     thumbnail: "/images/edtech.png",
   },
   {
