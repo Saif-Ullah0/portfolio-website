@@ -156,11 +156,14 @@ export default function HeroText() {
 
       {/* CTA Buttons */}
       <div
+        className="hero-buttons"
         style={{
           display: "flex",
-          gap: "1rem",
+          gap: "0.75rem",
           justifyContent: "center",
           flexWrap: "wrap",
+          flexDirection: "row",
+          padding: "0 1rem",
         }}
       >
         <MagneticButton>
@@ -177,6 +180,8 @@ export default function HeroText() {
               textDecoration: "none",
               transition: "all 0.2s ease",
               border: "1px solid var(--color-violet)",
+              minWidth: "220px",
+              whiteSpace: "nowrap",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor =
@@ -209,6 +214,8 @@ export default function HeroText() {
               transition: "all 0.2s ease",
               border: "1px solid var(--color-violet, #7c3aed)",
               boxShadow: "0 4px 14px rgba(124, 58, 237, 0.35)",
+              minWidth: "220px",
+              whiteSpace: "nowrap",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor =
