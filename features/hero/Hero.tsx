@@ -24,17 +24,30 @@ export default function Hero() {
       <HeroReveal />
       <HeroCanvas />
 
-      <div style={{
+      <style>{`
+        .hero-orb {
+          width: 600px;
+          height: 600px;
+        }
+        @media (max-width: 767px) {
+          .hero-orb {
+            top: 32% !important;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, transparent 70%) !important;
+          }
+        }
+      `}</style>
+
+      <div className="hero-orb" style={{
         position: "absolute",
         top: "20%",
         left: "50%",
         transform: "translateX(-50%)",
-        width: "600px",
-        height: "600px",
         borderRadius: "50%",
         background: "radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%)",
         pointerEvents: "none",
-        zIndex: 3,
+        zIndex: 1,
       }} />
 
       <div style={{ position: "relative", zIndex: 10 }}>
