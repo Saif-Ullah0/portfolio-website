@@ -224,6 +224,7 @@ export default function Certificates() {
                       src={imgSrc}
                       alt={cert.title}
                       fill
+                      loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       style={{ objectFit: "cover", objectPosition: "top" }}
                     />
@@ -436,6 +437,7 @@ export default function Certificates() {
                   src={certImages[certificates[selected].id]}
                   alt={certificates[selected].title}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1200px) 100vw, 850px"
                   style={{ objectFit: "contain" }}
                 />
