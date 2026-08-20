@@ -44,13 +44,14 @@ const categories = [
 
 export default function Skills() {
   const [isMobile, setIsMobile] = useState(false);
-  const [viewMode, setViewMode] = useState<"3d" | "grid">("3d");
+  const [viewMode, setViewMode] = useState<"3d" | "grid">("grid");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
+      setViewMode(mobile ? "grid" : "3d");
     };
 
     handleResize();
