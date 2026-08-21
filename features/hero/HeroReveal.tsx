@@ -71,7 +71,7 @@ export default function HeroReveal() {
       style={{
         position: "absolute",
         inset: 0,
-        zIndex: 2,
+        zIndex: 1,
         pointerEvents: "none",
         overflow: "hidden",
         opacity: 0,
