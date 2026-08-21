@@ -1,22 +1,21 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-function Particles() {
+function Particles({ count, isMobile }: { count: number; isMobile: boolean }) {
   const meshRef = useRef<THREE.Points>(null);
 
-  const count = typeof window !== "undefined" && window.innerWidth < 768 ? 400 : 800;
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 20;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 20;
+      arr[i * 3] = Math.sin(i * 12.9898) * 10;
+      arr[i * 3 + 1] = Math.sin(i * 78.233) * 10;
+      arr[i * 3 + 2] = Math.sin(i * 43.758) * 10;
     }
     return arr;
-  }, []);
+  }, [count]);
 
   useFrame((state, delta) => {
     if (!meshRef.current) return;
@@ -33,10 +32,10 @@ function Particles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.03}
+        size={isMobile ? 0.06 : 0.03}
         color="#7c3aed"
         transparent
-        opacity={0.6}
+        opacity={isMobile ? 0.9 : 0.6}
         sizeAttenuation
       />
     </points>
@@ -44,6 +43,19 @@ function Particles() {
 }
 
 export default function HeroCanvas() {
+  const isMobile = useSyncExternalStore(
+    (onChange) => {
+      const mediaQuery = window.matchMedia("(max-width: 767px)");
+      mediaQuery.addEventListener("change", onChange);
+      return () => mediaQuery.removeEventListener("change", onChange);
+    },
+    () => window.matchMedia("(max-width: 767px)").matches,
+    () => false,
+  );
+  const [isTouchDevice] = useState(
+    () => typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0),
+  );
+
   return (
     <div
       style={{
@@ -52,15 +64,16 @@ export default function HeroCanvas() {
         left: 0,
         width: "100%",
         height: "100%",
-        zIndex: 0,
+        zIndex: 2,
       }}
     >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        style={{ background: "transparent" }}
+        dpr={typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 1.5) : 1}
+        style={{ background: "transparent", pointerEvents: isTouchDevice ? "none" : "auto" }}
         gl={{ alpha: true, antialias: true }}
       >
-        <Particles />
+        <Particles count={isMobile ? 240 : 800} isMobile={isMobile} />
       </Canvas>
     </div>
   );
