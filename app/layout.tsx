@@ -15,16 +15,19 @@ import CursorTrail from "@/components/CursorTrail";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
   variable: "--font-fira-code",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
